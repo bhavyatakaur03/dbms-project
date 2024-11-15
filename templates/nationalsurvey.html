@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey</title>
+    <link href='/static/css/nationalsurvey.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="survey-container">
+        <h1>Hello! Input Your Data</h1>
+        <form id="data-form" method="POST">
+            <div class="question">
+                <label for="user_id">User ID</label>
+                <input type="text" id="user_id" name="user_id" required>
+            </div>
+            <div class="question">
+                <label for="country">Country Name</label>
+                <input type="text" id="country" name="country" required>
+            </div>
+            <!-- Cereal Yield -->
+            <div class="question">
+                <label for="cereal_yield">Cereal Yield:</label>
+                <input type="number" id="cereal_yield" name="cereal_yield" step="0.01" required>
+            </div>
+
+            <!-- FDI as % of GDP -->
+            <div class="question">
+                <label for="fdi_perc_gdp">FDI as % of GDP:</label>
+                <input type="number" id="fdi_perc_gdp" name="fdi_perc_gdp" step="0.01" min="0" max="100" required>
+            </div>
+
+            <!-- GNI per Capita -->
+            <div class="question">
+                <label for="gni_per_cap">GNI per Capita:</label>
+                <input type="number" id="gni_per_cap" name="gni_per_cap" step="0.01" required>
+            </div>
+
+            <!-- Energy per Capita -->
+            <div class="question">
+                <label for="en_per_cap">Energy per Capita:</label>
+                <input type="number" id="en_per_cap" name="en_per_cap" step="0.01" required>
+            </div>
+
+            <!-- Urban Population Growth % -->
+            <div class="question">
+                <label for="pop_urb_aggl_perc">Urban Population Agglomeration %:</label>
+                <input type="number" id="pop_urb_aggl_perc" name="pop_urb_aggl_perc" step="0.01" min="0" max="100" required>
+            </div>
+
+            <!-- Protected Area % -->
+            <div class="question">
+                <label for="prot_area_perc">Protected Area %:</label>
+                <input type="number" id="prot_area_perc" name="prot_area_perc" step="0.01" min="0" max="100" required>
+            </div>
+
+            <!-- Population Growth % -->
+            <div class="question">
+                <label for="pop_growth_perc">Population Growth %:</label>
+                <input type="number" id="pop_growth_perc" name="pop_growth_perc" step="0.01" min="0" max="100" required>
+            </div>
+
+            <!-- Urban Population Growth % -->
+            <div class="question">
+                <label for="urb_pop_growth_perc">Urban Population Growth %:</label>
+                <input type="number" id="urb_pop_growth_perc" name="urb_pop_growth_perc" step="0.01" min="0" max="100" required>
+            </div>
+
+            <div class="button-group">
+                <input type="submit" value="Submit" id="submit-btn">
+            </div>
+
+            
+        </form>
+        <p id="result1" class="result-item"></p>
+        <p id="credit" class="result-item"></p>
+        <p id="heat" class="result-item"></p>
+        <p id="trees" class="result-item"><p>
+        <p id="result_recommend" class="result-item"></p>
+            
+    </div>
+    <script src='/static/js/nationalsurvey.js'>
+    
+        </script>
+</body>
+</html>

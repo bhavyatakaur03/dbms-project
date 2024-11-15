@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carbon Emission Predictor</title>
+
+    <link rel="stylesheet" href="/static/css/individualsurvey.css">
+    
+</head>
+<body>
+    <div class="survey-container">
+        <h1>Hello! fill up users details </h1>
+        <form id="survey-form" method="POST" action="/predict">
+            <div class="question" id="question-00">
+                <div class="form-group">
+                    <label for="user_id">User ID</label>
+                    <input type="text" id="user_id" name="user_id" required>
+                </div>
+            </div>
+            <div class="question" id="question-0">
+                <div class="form-group">
+                    <label for="month">Month</label>
+                    <input type="number" id="month" name="month" required>
+                </div>
+            </div>
+            <!-- Question 1 -->
+            <div class="question" id="question-1">
+                <div class="form-group">
+                    <label for="Monthly_Grocery_Bill">Monthly Grocery Bill:</label>
+                    <input type="number" id="Monthly_Grocery_Bill" name="Monthly_Grocery_Bill" required>
+                </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="question" id="question-2">
+                <div class="form-group">
+                    <label for="Vehicle_Monthly_Distance_Km">Vehicle Monthly Distance (Km):</label>
+                    <input type="number" id="Vehicle_Monthly_Distance_Km" name="Vehicle_Monthly_Distance_Km" required>
+                </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="question" id="question-3">
+                <div class="form-group">
+                    <label for="Waste_Bag_Weekly_Count">Waste Bag Weekly Count:</label>
+                    <input type="number" id="Waste_Bag_Weekly_Count" name="Waste_Bag_Weekly_Count" required>
+                </div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="question" id="question-4">
+                <div class="form-group">
+                    <label for="How_Long_TV_PC_Daily_Hour">How Long TV/PC Daily (Hours):</label>
+                    <input type="number" id="How_Long_TV_PC_Daily_Hour" name="How_Long_TV_PC_Daily_Hour" required>
+                </div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="question" id="question-5">
+                <div class="form-group">
+                    <label for="How_Many_New_Clothes_Monthly">How Many New Clothes Monthly:</label>
+                    <input type="number" id="How_Many_New_Clothes_Monthly" name="How_Many_New_Clothes_Monthly" required>
+                </div>
+            </div>
+
+            <!-- Question 6 -->
+            <div class="question" id="question-6">
+                <div class="form-group">
+                    <label for="How_Long_Internet_Daily_Hour">How Long Internet Daily (Hours):</label>
+                    <input type="number" id="How_Long_Internet_Daily_Hour" name="How_Long_Internet_Daily_Hour" required>
+                </div>
+            </div>
+
+            <!-- Question 7 -->
+            <div class="question" id="question-7">
+                <div class="form-group">
+                    <label for="Recycling_Materials">Which material do you recycle?</label>
+                    <select id="Recycling_Materials" name="Recycling_Materials" required>
+                        <option value="True">Glass</option>
+                        <option value="1">Metal</option>
+                        <option value="1">Plastic</option>
+                        <option value="1">Paper</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Question 8 -->
+            <div class="question" id="question-8">
+                <div class="form-group">
+                    <label for="Cooking_Methods">Which cooking method do you use?</label>
+                    <select id="Cooking_Methods" name="Cooking_Methods" required>
+                        <option value="True">Oven</option>
+                        <option value="1">Microwave</option>
+                        <option value="1">Grill</option>
+                        <option value="1">Airfryer</option>
+                        <option value="1">Stove</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Question 9 -->
+            <div class="question" id="question-9">
+                <div class="form-group">
+                    <label for="Body_Type">Body Type:</label>
+                    <select id="Body_Type" name="Body_Type" required>
+                        <option value="underweight">Underweight</option>
+                        <option value="normal">Normal</option>
+                        <option value="overweight">Overweight</option>
+                        <option value="obese">Obese</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Question 10 -->
+            <div class="question" id="question-10">
+                <div class="form-group">
+                    <label for="Sex">Sex:</label>
+                    <select id="Sex" name="Sex" required>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Question 11 -->
+            <div class="question" id="question-11">
+                <div class="form-group">
+                    <label for="Diet">Diet:</label>
+                    <select id="Diet" name="Diet" required>
+                        <option value="pescatarian">Pescatarian</option>
+                        <option value="omnivore">Omnivore</option>
+                        <option value="vegan">Vegan</option>
+                        <option value="vegetarian">Vegetarian</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Question 12 -->
+            <div class="question" id="question-12">
+                <div class="form-group">
+                    <label for="How_Often_Shower">How Often Shower:</label>
+                    <select id="How_Often_Shower" name="How_Often_Shower" required>
+                        <option value="less frequently">Less Frequently</option>
+                        <option value="daily">Daily</option>
+                        <option value="twice a day">Twice a Day</option>
+                        <option value="more frequently">More Frequently</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Question 13 -->
+            <div class="question" id="question-13">
+                <div class="form-group">
+                    <label for="Heating_Energy_Source">Heating Energy Source:</label>
+                    <select id="Heating_Energy_Source" name="Heating_Energy_Source" required>
+                        <option value="coal">Coal</option>
+                        <option value="natural gas">Natural Gas</option>
+                        <option value="wood">Wood</option>
+                        <option value="electricity">Electricity</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Question 14 -->
+            <div class="question" id="question-14">
+                <div class="form-group">
+                    <label for="Social_Activity">Social Activity:</label>
+                    <select id="Social_Activity" name="Social_Activity" required>
+                        <option value="never">Never</option>
+                        <option value="sometimes">Sometimes</option>
+                        <option value="often">Often</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Question 15 -->
+            <div class="question" id="question-15">
+                <div class="form-group">
+                    <label for="Frequency_of_Traveling_by_Air">Frequency of Traveling by Air:</label>
+                    <select id="Frequency_of_Traveling_by_Air" name="Frequency_of_Traveling_by_Air" required>
+                        <option value="never">Never</option>
+                        <option value="rarely">Rarely</option>
+                        <option value="frequently">Frequently</option>
+                        <option value="very frequently">Very Frequently</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Question 16 -->
+            <div class="question" id="question-16">
+                <div class="form-group">
+                    <label for="Waste_Bag_Size">Waste Bag Size:</label>
+                    <select id="Waste_Bag_Size" name="Waste_Bag_Size" required>
+                        <option value="small">Small</option>
+                        <option value="medium">Medium</option>
+                        <option value="large">Large</option>
+                        <option value="extra large">Extra Large</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Question 17 -->
+            <div class="question" id="question-17">
+                <div class="form-group">
+                    <label for="Energy_efficiency">Energy Efficiency:</label>
+                    <select id="Energy_efficiency" name="Energy_efficiency" required>
+                        <option value="Yes">Yes</option>
+                        <option value="Sometimes">Sometimes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Question 18 -->
+            <div class="question" id="question-18">
+                <div class="form-group">
+                    <label for="Transport_Vehicle_Type">Primary Mode of Transport:</label>
+                    <select id="Transport_Vehicle_Type" name="Transport_Vehicle_Type" required>
+                        <option value="car (type: petrol)">Petrol</option>
+                        <option value="car (type: diesel)">Diesel</option>
+                        <option value="walk/bicycle">Walk/Bicycle</option>
+                        <option value="public transport">Public Transport</option>
+                        <option value="car (type: hybrid)">Hybrid</option>
+                        <option value="car (type: LPG)">LPG</option>
+                        <option value="car (type: electric)">Electric</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <input type="submit" value="Submit" id="submit-btn">
+            </div>
+            <div id="result" class="result-item">
+                
+            </div>
+        </form>
+        <p id="credit" class="result-item"></p>
+        <p id="heat" class="result-item"></p>
+        <p id="trees" class="result-item"><p>
+        <p id="result_recommend" class="result-item"></p>
+        
+    </div>
+    <script src='/static/js/individualsurvey.js'>
+
+    </script>
+</body>
+</html>

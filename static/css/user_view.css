@@ -1,0 +1,144 @@
+/* General reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #e8f5e9;
+    padding: 20px; /* Add padding to prevent content from touching the edges */
+    min-height: 100vh; 
+}
+
+/* Main container for the dashboard */
+.main-container {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    max-width: 1200px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+/* Left side styling for the chart */
+.left-side {
+    flex: 1;
+    width: 48%;
+    padding: 20px;
+    background-color: #ffffff;
+    text-align: left;
+}
+
+.left-side h2 {
+    color: #388e3c;
+    margin-bottom: 10px;
+}
+
+.chart-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    height: 300px;
+    margin-top: 20px;
+}
+
+/* Right side styling for the parameters */
+.right-side {
+    width: 48%;
+    flex: 1;
+    padding: 20px;
+    background-color: #f1f8e9;
+    display: flex;
+    flex-direction: column;
+    color: #388e3c;
+}
+
+.current-month-section {
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.current-month-section h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.footprint-value {
+    font-size: 1.5em;
+    color: #4caf50;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.factors-list {
+    list-style: none;
+    padding-left: 10px;
+}
+
+.factors-list li {
+    font-size: 1em;
+    margin-bottom: 8px;
+}
+
+.parameters-section {
+    clear: both;
+    width: 100%;
+    max-width: 1200px;
+    background-color: #e8f5e9; /* Match the background color */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-top: 20px;
+}
+
+.parameters-section h3 {
+    font-size: 1.5em;
+    color: #388e3c;
+    margin-bottom: 20px;
+}
+
+.parameters-section p {
+    font-size: 1.5em;
+    color: #388e3c;
+    margin-bottom: 20px;
+}
+
+/* Card container and card styles */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-evenly;
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    width: 200px;
+}
+
+.card h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 16px;
+    color: #388e3c;
+    font-weight: bold;
+}

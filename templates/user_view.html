@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User History - Carbon Footprint Tracker</title>
+    <link rel="stylesheet" href="/static/css/user_view.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="main-container">
+        <!-- Left side for chart and user info -->
+        <div class="left-side">
+            <h2>Welcome, <span id="userName"></span></h2>
+            <p>Here’s your carbon footprint history over the past months.</p>
+            <div class="chart-container">
+                <canvas id="historyChart"></canvas>
+            </div>
+        </div>
+        
+        <!-- Right side with current month data and contributing factors -->
+        <div class="right-side">
+            <div class="current-month-section">
+                <h3>This Month's Carbon Footprint</h3>
+                <p class="footprint-value" id="currentFootprint">Loading...</p>
+                <h4>Contributing Factors</h4>
+                <ul class="factors-list" id="factorsList">
+                    <!-- Factors will be inserted here dynamically -->
+                </ul>
+                <p> </p>
+            </div>
+           
+        </div>
+       
+    </div>
+
+    <div class="parameters-section">
+        <h3>Your Parameters</h3>
+        <div class="card-container" id="parameterCards">
+            <!-- Cards will be inserted here dynamically -->
+        </div>
+       <p> {{user_data.suggestions}}</p>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Fixed static data for chart
+            const userName = "{{ username }}";
+            const currentMonthFootprint = {{ user_data.footprint }}; // kg CO₂
+            const factors = [
+                { name: "Transportation", value: "{{ user_data.transport}}" },
+                { name: "Vehilcle Monthly Distance", value: {{user_data.vehicle_monthly_distance}} },
+                { name: "Heating Source", value: "{{user_data.heating_source}}" }
+             
+            ];
+            const parameters = [
+                { name: "Monthly Grocery Bill", value: {{ user_data.monthly_grocery_bill}}, unit: "USD" },
+                { name: "Vehicle Monthly Distance", value: {{ user_data.vehicle_monthly_distance}}, unit: "km" },
+                { name: "Waste Bags", value: {{ user_data.waste_bag}}, unit: "bags" },
+                { name: "TV/PC Hours", value:{{ user_data.tv_pc_hour}}, unit: "hours" },
+                { name: "New Clothes", value: {{ user_data.new_clothes}}, unit: "items" },
+                { name: "Internet Usage", value: {{ user_data.internet}}, unit: "GB" },
+                { name: "Body", value: "{{ user_data.body}}", unit: "" },
+                { name: "Sex", value: "{{ user_data.sex}}", unit: "" },
+                { name: "Diet", value: "{{ user_data.diet}}", unit: "" },
+                { name: "Shower", value: "{{ user_data.shower}}", unit: "" },
+                { name: "Heating Source", value: "{{ user_data.heating_source}}", unit: "" },
+                { name: "Social", value: "{{ user_data.social}}", unit: "" },
+                { name: "Travel by Air", value: "{{ user_data.travel_air}}", unit: "flights" },
+                { name: "Waste Bag Size", value: "{{ user_data.waste_bag_size}}", unit: "" },
+                { name: "Energy", value: "{{ user_data.energy}}", unit: "" },
+                { name: "Transport", value: "{{ user_data.transport}}", unit: "" },
+                { name: "Footprint", value: {{ user_data.footprint}}, unit: "kg CO₂" },
+                { name: "Credits", value: {{ user_data.credits}}, unit: "" },
+                { name: "Heat", value: {{ user_data.heat}}, unit: "kWh" },
+                { name: "Trees", value: {{ user_data.trees}}, unit: "" },
+               
+            ];
+                
+
+            // Update the DOM with the user data
+            document.getElementById("userName").textContent = userName;
+            document.getElementById("currentFootprint").textContent = `${currentMonthFootprint} kg CO₂`;
+
+            const factorsListElement = document.getElementById("factorsList");
+            factors.forEach(factor => {
+                const li = document.createElement("li");
+                li.textContent = `${factor.name}: ${factor.value} kg CO₂`;
+                factorsListElement.appendChild(li);
+            });
+
+            // Create cards dynamically for the parameters
+            const parameterCardsContainer = document.getElementById("parameterCards");
+            parameters.forEach(parameter => {
+                const card = document.createElement("div");
+                card.classList.add("card");
+                card.innerHTML = `
+                    <h4>${parameter.name}</h4>
+                    <p>${parameter.value} ${parameter.unit}</p>
+                `;
+                parameterCardsContainer.appendChild(card);
+            });
+
+            // Data for static chart
+            const labels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+            const carbonData = [200, 180, 220, 190, 250, 210, 200, 195, 205, 215, 210, 200]; // Fixed values for months
+
+            // Render the chart
+            const ctx = document.getElementById("historyChart").getContext("2d");
+            new Chart(ctx, {
+                type: "line",
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: "Carbon Footprint (kg CO₂)",
+                        data: carbonData,
+                        borderColor: "#4caf50",  // Line color
+                        backgroundColor: "rgba(76, 175, 80, 0.2)",  // Area under the curve color
+                        borderWidth: 2,
+                        pointBackgroundColor: "#388e3c",
+                        pointRadius: 4,
+                        fill: true  // This makes the area under the line filled
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: "top"
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `${context.dataset.label}: ${context.raw} kg CO₂`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: "Carbon Footprint (kg CO₂)"
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: "Months"
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
